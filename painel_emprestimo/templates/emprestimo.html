@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Emprestimo</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+    <main>
+        <div class="form-container">
+            <div class="container">
+                <h1>Formulario para Empréstimo</h1>
+                <form action="{% url 'formulario_emprestimo' %}" method="post" class="form" autocomplete="off">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+
+            {% if resultado is not None %}
+            <h3>Empréstimo: {{ resultado }}</h3>
+            {% endif %}
+        </div>
+    </main>
+
+</body>
+</html>
